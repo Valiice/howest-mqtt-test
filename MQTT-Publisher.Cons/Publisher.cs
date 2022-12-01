@@ -24,9 +24,12 @@ namespace MQTT_Test.Cons
 
             Console.WriteLine("Please press a key to publish the message");
 
-            string payload = Console.ReadLine();
+            while (true)
+            {
+                string payload = Console.ReadLine();
 
-            await PublicMessageAsync(client, payload);
+                await PublicMessageAsync(client, payload);
+            }
 
             await client.DisconnectAsync();
         }
