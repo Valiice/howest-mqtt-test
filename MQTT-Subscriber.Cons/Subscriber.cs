@@ -13,7 +13,9 @@ namespace MQTT_Subscriber.Cons
             IMqttClient client = mqttFactory.CreateMqttClient();
             var options = new MqttClientOptionsBuilder()
                             .WithClientId(Guid.NewGuid().ToString())
-                            .WithTcpServer("test.mosquitto.org", 1883)
+                            .WithTcpServer("https://test.mosquitto.org/", 1883)
+                            .WithCredentials("", "")
+                            .WithTls()
                             .WithCleanSession()
                             .Build();
             client.ConnectedAsync += async e => await MqttOnConnected(e, client);
